@@ -1,0 +1,101 @@
+<!-- <div class="formcontainer">
+    <h1 class="heading">Login</h1>
+
+    <form method="POST" action="/student/login">
+        <label class="enroll">
+      <input
+        type="text"
+        placeholder="Enter Enrollment no "
+        name="studid"
+        spellcheck="false"
+      />
+        </label>
+        <div class="id error"></div>
+
+
+        <label class="password">
+      <input
+        type="password"
+        placeholder="Enter Password "
+        name="password"
+        spellcheck="false"
+      />
+    </label>
+        <div class="password_error"></div>
+
+        <button class="loginbtn">Submit</button>
+        <div>
+            <p class="member">Don't have an account ?</p>
+            <h4 class="signin">
+                <a href="/student/register"> Register here.</a>
+            </h4>
+        </div>
+    </form>
+</div> -->
+<div class="row mt-5">
+    <div class="col-md-4 m-auto">
+        <div class="card register-card card-body">
+           </span><h1 style="color:#662d91"class="text-center mb-5"><i class="fa fa-user fa-xs" aria-hidden="true"></i> Login</h1>
+            <form>
+                <div class="form-group">
+                
+                <label for="enroll">Enrollment no</label>
+                    <input type="text" id="" name="studid" class="form-control" placeholder="Enter Enrollment no" />
+                </div>
+                <div class="id error"></div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" />
+                </div>
+                <div class="password_error"></div>
+
+                <button type="submit" class="btn   btn-block" style="background:#5A4FCF ;color:#ffff;">Login </button>
+            </form>
+            <p class="lead mt-4">
+               <span class="member"> No Account? </span><a class="signin" href="/student/register">Register</a>
+            </p>
+        </div>
+    </div>
+</div>
+<script>
+    const form = document.querySelector('form');
+    const enrollmentError = document.querySelector('.id.error');
+    const passwordError = document.querySelector('.password_error');
+    enrollmentError.textContent = '';
+    passwordError.textContent = '';
+
+    form.addEventListener('submit', async(e) => {
+        e.preventDefault();
+        // reset errors
+        // get values
+        const password = form.password.value;
+        const studid = form.studid.value;
+        try {
+            const res = await fetch('/student/login', {
+                method: 'POST',
+                body: JSON.stringify({
+                    studid,
+                    password,
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await res.json();
+
+
+            if (data.user) {
+                console.log('logged in')
+
+                location.assign('/student/studentdashboard');
+            } else {
+                console.log(data);
+                enrollmentError.textContent = data.message;
+
+            }
+        } catch (err) {
+            // console.log(err);
+            throw err;
+        }
+    });
+</script>

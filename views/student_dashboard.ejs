@@ -1,0 +1,28 @@
+
+    <input type="checkbox" id="check">
+    <!--header area start-->
+    <header>
+      <label for="check">
+        <i class="fas fa-bars" id="sidebar_btn"></i>
+      </label>
+      <div class="left_area">
+        <h3>Hello, <span> <% if(user){ %>
+                <%=user.stud_name%>
+            <% }%></span></h3>
+      </div>
+      <div class="right_area">
+        <a href="/student/logout" class="logout_btn">Logout</a>
+      </div>
+    </header>
+    <!--header area end-->
+    <!--sidebar start-->
+    <div class="sidebar">
+    
+      <a href="/student/basicinfo"><i class="fas fa-desktop"></i><span>Enter Personal Info</span></a>
+      <a  href="/student/applyscholarship"><i class="fa fa-book" aria-hidden="true"></i><span>Apply for Scholarship</span></a>
+      <a href="/student/payment" ><i class="fa fa-credit-card-alt" aria-hidden="true"></i><span>Pay fees</span></a>
+    
+    </div>
+    <!--sidebar end-->
+
+    <div class="content"></div>

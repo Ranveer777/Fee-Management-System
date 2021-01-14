@@ -1,0 +1,74 @@
+<div class="st-dashboard-nav">
+
+    <% if(user){ %>
+        <h4>
+            Hello, Admin<%=user.admin_id%>
+        </h4>
+        <% }%>
+
+            <button class="st-dashboard-button"><a href="/admin/logout">Logout</a></button>
+
+</div>
+
+<div class="container">
+    <h4 class="mt-5">List of Students who have not paid the fee</h4>
+<table class="table table-striped table-dark mt-5">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Enrollment no</th>
+                    <th>Admission Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0;i<result.length;i++){ %>
+                    <% if(result[i].fees_status==0) {%>
+                <tr>
+                    <td>
+                        <%= result[i].stud_name %>
+                    </td>
+                    <td>
+                        <%= result[i].stud_id %>
+                    </td>
+                    <td>
+                        <%= result[i].year %>
+                    </td>
+                  
+                </tr>
+                <%}%>
+
+                <%}%>
+
+            </tbody>
+ </table>
+
+ <h4 class="mt-5">List of Students who have  paid the fee</h4>
+<table class="table table-striped table-dark mt-5">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Enrollment no</th>
+                    <th>Admission Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0;i<result.length;i++){ %>
+                    <% if(result[i].fees_status==1) {%>
+
+                <tr>
+                    <td>
+                        <%= result[i].stud_name %>
+                    </td>
+                    <td>
+                        <%= result[i].stud_id %>
+                    </td><td>
+                        <%= result[i].year %>
+                    </td>
+                  
+                </tr>
+                <%}%>
+                <%}%>
+
+            </tbody>
+ </table>
+</div>

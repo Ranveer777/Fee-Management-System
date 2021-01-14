@@ -1,0 +1,188 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+/* body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    background: #ffffff;
+} */
+
+
+
+.heading {
+    color: #5e63b6;
+    letter-spacing: 1px;
+    display: inline-block;
+    transform: scale(1.1, 1.2);
+    display: block;
+    margin: 10px 0;
+}
+
+/* form {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+    padding: 10px 0;
+    height: 80vh;
+    width: 420px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background: #ffffff;
+} */
+
+
+/* form:hover {
+    border-radius: 15px;
+    background: #f1f1f1;
+    box-shadow: inset 26px 26px 52px #e3e3e3, inset -26px -26px 52px #ffffff;
+} */
+
+/* label {
+    position: relative !important;
+} */
+
+.register-card input {
+    border: none !important;
+    outline: none !important;
+    /* width: 280px !important;
+    height: 30px !important; */
+    /* margin: 20px  !important; */
+    /* padding: 10px 35px !important; */
+    background: #ecf7f7 !important;
+    /* color:#c060a1; */
+    transition: 0.5s all ease-in-out !important;
+    font-size: 15px !important;
+    font-weight: 300 !important;
+    border-bottom: 2px solid #5e63b6 !important;
+    border-radius: 3px !important;
+}
+
+input:hover {
+    color: #0f3460;
+}
+
+.loginbtn {
+    outline: none;
+    border: none;
+    /* margin: 20px;
+    padding: 20px; */
+    font-size: 10px;
+    cursor: pointer;
+    background: #be93c5;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient( to right, #7bc6cc, #be93c5);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient( to right, #7bc6cc, #be93c5);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* width: 280px;
+    height: 30px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.loginbtn:hover {
+    box-shadow: 0 12px 20px -12px #86c4ba;
+    background: #898bd1;
+}
+
+.member {
+    display: inline-block;
+    margin: 0 2px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+}
+
+.signin {
+    display: inline-block;
+    color: #1f4068 !important;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 18px;
+
+}
+
+.enrollment_error {
+    color: #f05454;
+    /* position: absolute !important; */
+    left: 23px;
+    top: 70px;
+    font-size: 13px;
+}
+
+.user::before {
+    content: "\f007";
+    top: 37px;
+    position: absolute;
+    left: 30px;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    z-index: 100;
+    font-weight: 900;
+    color: #898bd1;
+    transition: 0.3s all ease-in-out;
+}
+
+.enroll::before {
+    content: "\f303";
+    top: 37px;
+    position: absolute;
+    left: 30px;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome\ 5 Free";
+    z-index: 100;
+    font-weight: 700;
+    color: #898bd1;
+    transition: 0.3s all ease-in-out;
+}
+
+.email::before {
+    content: "\f0e0";
+    top: 37px;
+    position: absolute;
+    left: 30px;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    z-index: 100;
+    font-weight: 900;
+    color: #898bd1;
+    transition: 0.3s all ease-in-out;
+}
+
+.password::before {
+    content: "\f023";
+    top: 37px;
+    position: absolute;
+    left: 30px;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    z-index: 100;
+    font-weight: 900;
+    color: #898bd1;
+    transition: 0.3s all ease-in-out;
+}
+
+.success{
+    color:green;
+}
+

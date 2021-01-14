@@ -1,0 +1,46 @@
+<div class="st-dashboard-nav">
+
+    <% if(user){ %>
+        <h4>
+            Hello, Admin<%=user.admin_id%>
+        </h4>
+        <% }%>
+
+            <button class="st-dashboard-button"><a href="/admin/logout">Logout</a></button>
+
+</div>
+<div class="container">
+<h3 class="mt-5">List of students applied for scholarship</h3>
+
+    <div class="row mt-5">
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Enrollment no</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0;i<students.length;i++){ %>
+                <% if(students[i].scholarship_status==0 && students[i].scholarship_id!=3){ %>
+              <tr>
+                <td >
+                    <%= students[i].stud_name %>
+                </td>
+                <td>
+                    <%= students[i].stud_id %>
+                </td>
+                
+               
+                <td><button ><a href="/admin/handle_scholarship/<%= students[i].stud_id%>">see status<a></button></td>
+            </tr>
+            <%}%>
+                
+           <% } %>
+            
+
+        </tbody>
+    </table>
+    </div>
+    </div>
+

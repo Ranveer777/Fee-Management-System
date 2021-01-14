@@ -1,0 +1,20 @@
+
+
+<div class="st-dashboard-nav">
+
+    <% if(user){ %>
+        <h4>
+            Hello,
+            <%=user.admin_id%>
+        </h4>
+        <% }%>
+
+            <button class="st-dashboard-button"><a href="/admin/logout">Logout</a></button>
+
+</div>
+
+<div class="options-section">
+    <button><a href="/admin/get_student_info"><i class="fa fa-id-card" aria-hidden="true"></i>Get student Info</a></button>
+    <!-- <button><a href="/admin/create_student_record"><i class="fa fa-id-card" aria-hidden="true"></i>Create student Record</a></button> -->
+    <button><a href="/admin/approve_scholarship"><i class="fa fa-id-card" aria-hidden="true"></i>Approve scholarship</a></button>
+</div>

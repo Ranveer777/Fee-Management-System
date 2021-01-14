@@ -1,0 +1,109 @@
+<div class="st-dashboard-nav mb-5">
+
+    <% if(user){ %>
+        <h4>
+            Hello,Admin
+            <%=user.admin_id%>
+        </h4>
+        <% }%>
+
+            <button class="st-dashboard-button"><a href="/admin/logout">Logout</a></button>
+           
+            
+
+</div>
+<div class="row mt-5">
+    <div class="col-md-4 m-auto">
+        <div class="card register-card card-body">
+            <h3 class="text-center mb-3">Add Student Record</h3>
+            <form>
+                <div class="form-group">
+                    <label for="enroll">Enrollment no</label>
+                    <input type="text" id="studid" name="studid" class="form-control" placeholder="Enter Enrollment no" />
+                </div>
+                <div class="enrollment_error"></div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name" />
+                </div>
+                <div class="form-group">
+                    <label for="name">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email" />
+                </div><div class="form-group">
+                    <label for="category">Category</label>
+                    <input type="text" id="category" name="category" class="form-control" placeholder="Enter category" />
+                </div>
+                <div class="form-group">
+                    <label for="year">Admission year</label>
+                    <input type="number" id="year" name="year" class="form-control" placeholder="Enter Admission year" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Set password for student</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" />
+                </div>
+                <button type="submit" class="btn  btn-success btn-block">Add</button>
+            </form>
+          
+        </div>
+    </div>
+</div>
+
+<script>
+    const form = document.querySelector('form');
+    // const emailError = document.querySelector('.email_error');
+    // const passwordError = document.querySelector('.password_error');
+    // const nameError = document.querySelector('.name_error');
+    const enrollmentError = document.querySelector('.enrollment_error');
+
+    // emailError.textContent = ''
+    // nameError.textContent = ''
+    // passwordError.textContent = ''
+    enrollmentError.textContent = ''
+
+    form.addEventListener('submit', async(e) => {
+        e.preventDefault();
+
+        const email = form.email.value;
+        const password = form.password.value;
+        const name = form.name.value;
+        const studid = form.studid.value;
+        const category = form.category.value;
+        const year = parseInt(form.year.value);
+        try {
+            const res = await fetch('/admin/add_student_record_post', {
+                method: 'POST',
+                body: JSON.stringify({
+                    studid,
+                    name,
+                    email,
+                    password,
+                    category,
+                    year
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await res.json();
+
+            console.log('in register')
+            console.log(data);
+            if (data) {
+                if (data.errors) {
+
+                    enrollmentError.textContent = data.errors.id_error;
+                    console.log(enrollmentError.textContent);
+                    console.log(data.errors);
+
+
+
+                }
+                if (data.studid) {
+                    res.send('Added successfully')
+                }
+            }
+        } catch (err) {
+            throw err;
+        }
+    });
+</script>

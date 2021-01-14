@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <script src="https://checkout.stripe.com/checkout.js" defer>
+    </script>
+    <script>
+        var stripePublicKey = 'pk_test_51HsAN1DWAYQVTPQ4eWz2JY015J0XKeKF37Njm3dSSpAECTsHaoiItS82ssLnEksXTtmWGMYnqlhdArrkt206FzyG00OvpUN4GH';
+        
+    </script>
+    <script src="/js/payment.js"  id="helper" data-fees_status="<%= fees_status %>" defer></script>
+    
+
+
+</head>
+
+<body>
+    <div class="st-dashboard-nav">
+
+        <% if(user){ %>
+            <h4>
+                Hello,
+                <%=user.stud_name%>
+            </h4>
+            <% }%>
+
+                <button class="st-dashboard-button"><a href="/student/logout">Logout</a></button>
+
+    </div>
+    <div class="container mt-5">
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Enrollment no</th>
+                    <th>Admission year</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <%= stud_name %>
+                    </td>
+                    <td>
+                        <%= stud_id %>
+                    </td>
+                    <td>
+                        2010-2011
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <div class="row mt-5">
+            <div class="col-md-12  ">
+                <table class="table  table-striped table-dark table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Fee Type</th>
+                            <th>Expected fee
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                TUTION FEE
+                            </td>
+                            <td>
+                                <%= tution_fee %>
+                            </td>
+                          
+
+
+                        </tr>
+                        <tr>
+                            <td>
+                                UNIVERSITY FEE
+                            </td>
+
+                            <td>
+                                <%= university_fee %>
+                            </td>
+                            
+
+
+
+                        </tr>
+
+                        <tr>
+                            <td>
+                                DEVELOPMENT FEE
+                            </td>
+
+                            <td>
+                                <%= development_fee %>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+                <div class="row mt-8">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Total Amount(with scholarship)</th>
+                                <th>
+                                    <input type="text" readonly="readonly" name="pay_amount" id="fee_amount" value="<%= acad_pay_amount %>" />
+
+                                </th>
+                                <th>Fees paid</th>
+                                <th>
+                                <input type="text" readonly="readonly" name="pay_amount" id="fee_amount" value="<% if(fees_status==1){%> <%= acad_pay_amount %> <%} else{%> 0 <%}%>" />
+
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    <% if(!fees_status) { %>
+        <center> <button id="pay-btn"  style="border:none;width:130px;height:50px;border-radius:5px;outline:none"><a>Submit</a></button>
+        </center>
+    <% } %>
+    <% if(fees_status) { %>
+        <center> <button id="download-btn" style="border:none;margin:50px 0;width:200px;height:50px;border-radius:5px;outline:none"><a href="/student/download_fee_receipt">Download Fee receipt</a></button>
+        </center>
+    <% } %>
+    </div>
+</body>
+
+</html>

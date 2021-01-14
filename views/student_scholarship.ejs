@@ -1,0 +1,82 @@
+<div class="container mt-5">
+<h3>List of students applied for scholarship</h3>
+
+    <div class="row mt-5">
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Enrollment no</th>
+            </tr>
+        </thead>
+        <tbody>
+        <form>
+              <tr>
+                <td >
+                    <%= stud_name %>
+                </td>
+                <td>
+                    
+                    <input readonly="readonly"name="stud_id" value="<%= stud_id %>"/>
+            </td>
+                <td>
+                    <%= scholarship_name %>
+                </td>
+               
+                <td><button id="approve-btn">Approve</button></td>
+            </tr>
+        </form>
+                
+                
+
+        </tbody>
+    </table>
+    </div>
+    <div class="success"></div>
+
+    </div>
+
+    
+<script>
+    const form = document.querySelector('form');
+    const successvalue=document.querySelector('.success');
+    successvalue.textContent='';
+
+
+    form.addEventListener('submit', async(e) => {
+        e.preventDefault();
+       const stud_id =  form.stud_id.value;
+
+       console.log(stud_id)
+        try {
+            const res = await fetch('/admin/approvescholarship', {
+                method: 'POST',
+                body: JSON.stringify({
+                    stud_id,
+                    
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await res.json();
+
+            console.log('in approve')
+            console.log(data);
+           
+                if (data.success==0) {
+
+
+
+
+                }
+                if (data.success==1) {
+                    successvalue.textContent='Updated successfully !';
+                    console.log(success.value);
+                }
+            
+        } catch (err) {
+            throw err;
+        }
+    });
+</script>

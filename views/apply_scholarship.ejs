@@ -1,0 +1,92 @@
+<div class="st-dashboard-nav mb-5">
+
+    <% if(user){ %>
+        <h4>
+            Hello,
+            <%=user.stud_name%>
+        </h4>
+        <% }%>
+
+            <button class="st-dashboard-button"><a href="/student/logout">Logout</a></button>
+           
+            
+
+</div>
+<div class="container mt-5">
+   
+    <h4>Apply for anyone of the scholarship</h4>
+
+    <div class="row mt-5 ">
+        <div class="col-md-2">        <% for(var i=0;i<scholarship.length;i++){ %>
+         <input type="radio"  id="<%= scholarship[i].scholarship_name%>" name="scholarship" value="<%= scholarship[i].scholarship_name%>">
+        <label for="<%= scholarship[i].scholarship_name%>"><%= scholarship[i].scholarship_name %></label><br>
+
+        
+        <%} %>
+    </div>
+
+    </div>
+    <button class="apply-btn" id="apply-btn">Apply</button>
+    <div class="success"></div>
+
+</div>
+
+<script defer> 
+window.onload = function() {
+
+const applyBtn = document.getElementById('apply-btn');
+    applyBtn.addEventListener('click',async()=>{
+
+
+        let scholarship_id_selected=0;
+    
+        var ele = document.getElementsByTagName('input'); 
+          
+        for(i = 0; i < ele.length; i++) { 
+              
+            if(ele[i].type="radio") { 
+              
+                if(ele[i].checked) 
+                scholarship_id_selected=i+1;
+               
+            } 
+        }
+        try {
+            const res = await fetch('/student/student_applyscholarship', {
+                method: 'POST',
+                body: JSON.stringify({
+                    scholarship_id_selected
+                    
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await res.json();
+
+            console.log('in approve')
+            console.log(data);
+           
+                if (!data.success) {
+
+
+
+
+                }
+                else {
+                    successvalue.textContent='Updated successfully !';
+                    console.log(success.value);
+                }
+            
+        } catch (err) {
+            throw err;
+        }
+ 
+
+    
+
+    })
+    
+}
+</script> 
+

@@ -1,0 +1,65 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card register-card card-body">
+            <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i> Login</h1>
+            <form>
+                <div class="form-group">
+                
+                <label for="enroll">Admin Id</label>
+                    <input type="text" id="adminid" name="adminid" class="form-control" placeholder="Enter Enrollment no" />
+                </div>
+                <div class="id error"></div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" />
+                </div>
+                <div class="password_error"></div>
+
+                <button type="submit" class="btn btn-primary  btn-block">Login </button>
+            </form>
+           
+        </div>
+    </div>
+</div>
+<script>
+    const form = document.querySelector('form');
+    const enrollmentError = document.querySelector('.id.error');
+    const passwordError = document.querySelector('.password.error');
+   
+
+    form.addEventListener('submit', async(e) => {
+        e.preventDefault();
+        // reset errors
+        // get values
+        const password = form.password.value;
+        const adminid = form.adminid.value;
+        try {
+            const res = await fetch('/admin/login', {
+                method: 'POST',
+                body: JSON.stringify({
+                    adminid,
+                    password,
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await res.json();
+
+            console.log('in admin login')
+
+            if (data.user) {
+                console.log(data.user);
+
+                location.assign('/admin/admindashboard');
+            } else {
+                console.log(data);
+                enrollmentError.textContent = data.message;
+
+            }
+        } catch (err) {
+            // console.log(err);
+            throw err;
+        }
+    });
+</script>

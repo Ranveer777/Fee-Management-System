@@ -1,0 +1,153 @@
+<!-- <div class="container">
+
+    <div class="formcontainer">
+        <h1 class="heading">Register</h1>
+
+        <form>
+            <label class="enroll">
+        <input
+          type="text"
+          placeholder="Enter Enrollment no "
+          name="studid"
+          spellcheck="false"
+        />
+      </label>
+            <div class="enrollment_error"></div>
+
+            <label class="user">
+        <input
+          type="text"
+          placeholder="Enter Name "
+          name="name"
+
+          spellcheck="false"
+        />
+      </label>
+
+            <div class="name_error">
+
+            </div>
+            <label class="email">
+        <input
+          type="email"
+          placeholder="Enter Email"
+          name="email"
+          spellcheck="false"
+        />
+
+      </label>
+
+            <div class="email_error">
+
+            </div>
+
+            <label class="password">
+        <input
+          type="password"
+          placeholder="Enter Password "
+          name="password"
+          autocomplete="off"
+          spellcheck="false"
+        />
+      </label>
+
+            <div class="password_error">
+
+            </div>
+
+            <button class="loginbtn">Submit</button>
+            <div>
+                <p class="member">Alreday have an account ?</p>
+                <h4 class="signin">
+                    <a href="/student/login "> Login here.</a>
+                </h4>
+            </div>
+        </form>
+    </div>
+</div> -->
+<div class="row mt-5">
+    <div class="col-md-4 m-auto">
+        <div class="card register-card card-body">
+            <h1 class="text-center mb-3">Register</h1>
+            <form>
+                <div class="form-group">
+                    <label for="enroll">Enrollment no</label>
+                    <input type="text" id="studid" name="studid" class="form-control" placeholder="Enter Enrollment no" />
+                </div>
+                <div class="enrollment_error"></div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name" />
+                </div>
+                <div class="form-group">
+                    <label for="name">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" />
+                </div>
+                <button type="submit" class="btn  btn-success btn-block">Register</button>
+            </form>
+            <p class="lead mt-4">
+               <span class="member" > Already have an account? </span><a class="signin" style="color:aquamarine" href="/student/login">Login</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const form = document.querySelector('form');
+    // const emailError = document.querySelector('.email_error');
+    // const passwordError = document.querySelector('.password_error');
+    // const nameError = document.querySelector('.name_error');
+    const enrollmentError = document.querySelector('.enrollment_error');
+
+    // emailError.textContent = ''
+    // nameError.textContent = ''
+    // passwordError.textContent = ''
+    enrollmentError.textContent = ''
+
+    form.addEventListener('submit', async(e) => {
+        e.preventDefault();
+
+        const email = form.email.value;
+        const password = form.password.value;
+        const name = form.name.value;
+        const studid = form.studid.value;
+        try {
+            const res = await fetch('/student/register', {
+                method: 'POST',
+                body: JSON.stringify({
+                    studid,
+                    name,
+                    email,
+                    password,
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await res.json();
+
+            console.log('in register')
+            console.log(data);
+            if (data) {
+                if (data.errors) {
+
+                    enrollmentError.textContent = data.errors.id_error;
+                    console.log(enrollmentError.textContent);
+                    console.log(data.errors);
+
+
+
+                }
+                if (data.studid) {
+                    location.assign('/student/studentdashboard');
+                }
+            }
+        } catch (err) {
+            throw err;
+        }
+    });
+</script>

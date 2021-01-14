@@ -1,0 +1,203 @@
+body{
+    background: #f4fafa !important;  /* fallback for old browsers */
+
+}
+.wrapper {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 110vh !important;
+    /* margin: 100px auto !important; */
+    background: #f0f0f0 !important;
+}
+
+.student,
+.admin {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 30% !important;
+    height: 50vh !important;
+    margin: 0 30px !important;
+    border-radius: 20px !important;
+    background:#f0f0f0 !important;
+    box-shadow: 20px 20px 60px #cccccc, -20px -20px 60px #ffffff !important;
+}
+
+
+/* .student {
+    background: #C364FA !important;
+}
+
+.admin {
+    background: #6B00D7 !important;
+} */
+
+.rlbuttons {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 10px !important;
+}
+
+.rlbuttons button a {
+    text-decoration: none !important;
+}
+
+.rlbuttons button {
+    margin: 30px !important;
+    background:#9ab3f5 !important;
+
+    border: none !important;
+    padding: 10px !important;
+    width: 100px !important;
+    border-radius: 5px !important;
+}
+
+
+.card{
+    border:none !important ;
+}
+
+
+a{
+    text-decoration: none !important;
+}
+
+
+
+
+header{
+    position: fixed !important;
+    background: #22242A !important;
+    padding: 20px !important;
+    width: 100% !important;
+    height: 70px !important;
+  }
+
+  
+
+  
+  .left_area h3{
+    color: #fff !important;
+    margin:  -15px 30px!important;
+    font-size: 22px !important;
+    font-weight: 900 !important;
+  }
+
+  .left_area span{
+    color: #19B3D3 !important;
+  }
+  
+  .logout_btn{
+    padding: 5px !important;
+    background: #19B3D3 !important;
+    text-decoration: none !important;
+    float: right !important;
+    margin-top: -20px !important;
+    margin-right: 40px !important;
+    border-radius: 2px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+    transition: 0.5s !important;
+    transition-property: background !important;
+  }
+  
+  .logout_btn:hover{
+    background: #0B87A6 !important;
+  }
+  
+  .sidebar {
+    background: #2f323a !important;
+    margin-top: 70px !important;
+    padding-top: 30px !important;
+    position: fixed !important;
+    left: 0 !important;
+    width: 250px !important;
+    height: 100% !important;
+    transition: 0.5s !important;
+    transition-property: left !important;
+  }
+  
+  .sidebar .profile_image{
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 100px !important;
+    margin-bottom: 10px !important;
+  }
+  
+  .sidebar h4{
+    color: #ccc !important;
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .sidebar a{
+    color: #fff !important;
+    display: block !important;
+    width: 100% !important;
+    line-height: 60px !important;
+    text-decoration: none !important;
+    padding-left: 40px !important;
+    box-sizing: border-box !important;
+    transition: 0.5s !important;
+    transition-property: background !important;
+  }
+  
+  .sidebar a:hover{
+    background: #19B3D3 !important;
+  }
+  
+  .sidebar i{
+    padding-right: 10px !important;
+  }
+  
+  label #sidebar_btn{
+    z-index: 1 !important;
+    color: #fff !important;
+    position: fixed !important;
+    cursor: pointer !important;
+    left:10px !important;
+    font-size: 20px !important;
+    margin: 5px 0 !important;
+    transition: 0.5s !important;
+    transition-property: color !important;
+  }
+  
+  label #sidebar_btn:hover{
+    color: #19B3D3 !important;
+  }
+  
+  #check:checked ~ .sidebar{
+    left: -190px !important;
+  }
+  
+  #check:checked ~ .sidebar a span{
+    display: none !important;
+  }
+  
+  #check:checked ~ .sidebar a{
+    font-size: 20px !important;
+    margin-left: 170px !important;
+    width: 80px !important;
+  }
+  
+  .content{
+    margin-left: 250px !important;
+    background: url(background.png) no-repeat !important;
+    background-position: center !important;
+    background-size: cover !important;
+    height: 100vh !important;
+    transition: 0.5s !important;
+  }
+  
+  #check:checked ~ .content{
+    margin-left: 60px !important;
+  }
+  
+  #check{
+    display: none !important;
+  }
+             

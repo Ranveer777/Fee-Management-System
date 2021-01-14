@@ -1,0 +1,28 @@
+<input type="checkbox" id="check">
+<!--header area start-->
+<header>
+  <label for="check">
+    <i class="fas fa-bars" id="sidebar_btn"></i>
+  </label>
+  <div class="left_area">
+    <h3>Hello, <span> <% if(user){ %>
+            <%=user.admin_id%>
+        <% }%></span></h3>
+  </div>
+  <div class="right_area">
+    <a href="/admin/logout" class="logout_btn">Logout</a>
+  </div>
+</header>
+<!--header area end-->
+<!--sidebar start-->
+<div class="sidebar">
+
+  <a href="/admin/get_student_info"><i class="fas fa-desktop"></i><span>Get Student Info</span></a>
+  <a  href="/admin/approve_scholarship"><i class="fa fa-book" aria-hidden="true"></i><span>Approve Scholarship</span></a>
+  <a  href="/admin/add_student_record"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span>Add Student Record</span></a>
+  <a  href="/admin/add_fee_structure"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span>Add Fee Structure</span></a>
+
+</div>
+<!--sidebar end-->
+
+<div class="content"></div>

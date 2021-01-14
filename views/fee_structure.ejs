@@ -1,0 +1,102 @@
+ 
+<div class="st-dashboard-nav">
+
+    <% if(user){ %>
+        <h4>
+            Hello, Admin<%=user.admin_id%>
+        </h4>
+        <% }%>
+
+            <button class="st-dashboard-button"><a href="/admin/logout">Logout</a></button>
+
+</div>
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body">
+            <h1 class="text-center mb-3">Enter Details</h1>
+            <form>
+                <div class="form-group">
+                    <label for="year">Enter Year</label>
+                    <input type="number" id="year" name="year" class="form-control" placeholder="Enter Addmission Year" />
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Enter Category</label>
+                    <input type="text" id="category" name="category" class="form-control" placeholder="Enter Category" />
+                </div>
+                <div class="form-group">
+                    <label for="tution_fee">Enter Tution Fees</label>
+                    <input type="number" id="tution_fee" name="tution_fee" class="form-control" placeholder="Enter Tutuion Fee" />
+                </div>
+                <div class="form-group">
+                    <label for="development_fee">Enter Tution Fees</label>
+                    <input type="number" id="development_fee" name="development_fee" class="form-control" placeholder="Enter Development Fee" />
+                </div>
+                <div class="form-group">
+                    <label for="university_fee">Enter Tution Fees</label>
+                    <input type="number" id="development_fee" name="university_fee" class="form-control" placeholder="Enter University Fee" />
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </form>
+            <div class="success"></div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    const form = document.querySelector('form');
+    const successvalue=document.querySelector('.success');
+   
+
+    form.addEventListener('submit', async(e) => {
+        // e.preventDefault();
+        const category = form.category.value;
+        const year = parseInt(form.year.value);
+        const tution_fee = parseInt(form.tution_fee.value);
+        const development_fee = parseInt(form.development_fee.value);
+        const university_fee = parseInt(form.university_fee.value);
+        try {
+            const res = await fetch('/admin/add_fee_structure', {
+                method: 'POST',
+                body: JSON.stringify({
+                    
+                    category,
+                    year,
+                    tution_fee,
+                    development_fee,
+                    university_fee,
+
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+
+            const data = await res.json();
+
+            console.log('in fee_structure response')
+
+            if (data) {
+                if (!data.success) {
+
+
+                    console.log('error in submitting form ')
+
+
+
+
+                }
+                else  {
+
+                         successvalue.textContent='Added Succesfully'
+                }
+            }
+        } catch (err) {
+            throw err;
+        }
+
+    });
+</script>
